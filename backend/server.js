@@ -9,12 +9,27 @@ const voteRoutes = require("./routes/voteRoutes");
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: "*" } });
 
-app.use(cors());
+const allowedOrigin = "https://dynamic-haupia-40c4e1.netlify.app";
+
+app.use(
+  cors({
+    origin: allowedOrigin,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/api/polls", pollRoutes);
 app.use("/api/polls", voteRoutes);
+
+const io = new Server(server, {
+  cors: {
+    origin: allowedOrigin,
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 
 mongoose
   .connect(
