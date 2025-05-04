@@ -10,7 +10,7 @@ const voteRoutes = require("./routes/voteRoutes");
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigin = "https://dynamic-haupia-40c4e1.netlify.app";
+const allowedOrigin = "https://cool-bombolone-f23445.netlify.app/";
 
 app.use(
   cors({

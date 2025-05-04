@@ -4,7 +4,9 @@ import io from "socket.io-client";
 import CreatePoll from "./components/CreatePoll";
 import PollList from "./components/PollList";
 
-const socket = io(import.meta.env.VITE_SERVER_URL || "http://localhost:5000");
+const socket = io(
+  import.meta.env.VITE_SERVER_URL || "https://polling-1klx.onrender.com"
+);
 
 export default function App() {
   const [polls, setPolls] = useState([]);
