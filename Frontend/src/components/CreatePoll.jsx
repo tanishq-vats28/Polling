@@ -14,7 +14,11 @@ export default function CreatePoll({ onNew }) {
 
   const submit = async () => {
     if (!question.trim() || options.some((opt) => !opt.trim())) return;
-    const res = await axios.post("/api/polls", { question, options });
+    const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/polls`, {
+      question,
+      options,
+    });
+
     onNew(res.data);
     setQuestion("");
     setOptions(["", ""]);

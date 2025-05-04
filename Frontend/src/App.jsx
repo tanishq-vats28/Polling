@@ -12,7 +12,9 @@ export default function App() {
   const [polls, setPolls] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/polls").then((res) => setPolls(res.data));
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/polls`)
+      .then((res) => setPolls(res.data));
 
     socket.on("pollUpdated", (updatedPoll) => {
       setPolls((prev) =>
