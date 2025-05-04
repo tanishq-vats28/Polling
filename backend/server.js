@@ -10,7 +10,7 @@ const voteRoutes = require("./routes/voteRoutes");
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigin = "https://cool-bombolone-f23445.netlify.app/";
+const allowedOrigin = "https://cool-bombolone-f23445.netlify.app";
 
 app.use(
   cors({
@@ -19,9 +19,11 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(express.json());
+
 app.use("/api/polls", pollRoutes);
-app.use("/api/polls", voteRoutes);
+app.use("/api/votes", voteRoutes);
 
 const io = new Server(server, {
   cors: {
